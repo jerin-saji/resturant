@@ -1,3 +1,4 @@
+{% extends 'master/base.html' %}
 <title>Item_List</title>
 
 {% block content %}
@@ -8,17 +9,27 @@
     <input type="submit">
 </form>
 
-<ul>
-    {% for i in lists %}
-    <li>
-        {{i.item_name}}
-        {{i.item_category}}
-        {{i.item_item_cost}}
-        {{i.item_company_name}}
-        <a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a>
-        <a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a>
-        <br><br>
-    </li>
-    {% endfor %}
-</ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">item_name</th>
+            <th scope="col">item_category</th>
+            <th scope="col">item_cost</th>
+            <th scope="col">item_company_name</th>
+        </tr
+    </thead>
+    <tbody>
+        {% for i in lists %}
+        <tr>
+            <td>{{i.item_name}}</td>
+                <td>{{i.item_category}}</td>
+                    <td>{{i.item_cost}}</td>
+                        <td>{{i.company_name}}</td>
+                            <td><a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a></td>
+                                <td><a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a></td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
 {% endblock %}

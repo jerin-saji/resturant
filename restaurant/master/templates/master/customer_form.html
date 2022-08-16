@@ -1,3 +1,4 @@
+{% extends 'master/base.html' %}
 <title>Customer_List</title>
 
 {% block content %}
@@ -8,16 +9,26 @@
     <input type="submit">
 </form>
 
-<ul>
-    {% for i in key1 %}
-    <li>
-        {{ i.customer_name }}
-        {{ i.customer_contact }}
-        {{ i.item_details }}
-        <a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a>
-        <a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a>
-        <br><br>
-    </li>
-    {% endfor %}
-</ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">customer_name</th>
+            <th scope="col">customer_contact</th>
+            <th scope="col">item_details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in key1 %}
+        <tr>
+            <td>{{ i.customer_name }}</td>
+            <td>{{ i.customer_contact }}</td>
+                <td>{{ i.item_details }}</td>
+                    <td><a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a></td>
+                        <td><a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
 {% endblock %}
+
+
