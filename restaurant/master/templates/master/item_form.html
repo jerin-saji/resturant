@@ -1,4 +1,4 @@
-<title>Customer_List</title>
+<title>Item_List</title>
 
 {% block content %}
 <form action="/items/" method="POST">
@@ -9,11 +9,12 @@
 </form>
 
 <ul>
-    {% for i in key1 %}
+    {% for i in lists %}
     <li>
-        {{ i.customer_name }}
-        {{ i.customer_contact }}
-        {{ i.item_details }}
+        {{i.item_name}}
+        {{i.item_category}}
+        {{i.item_item_cost}}
+        {{i.item_company_name}}
         <a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a>
         <a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a>
         <br><br>

@@ -13,7 +13,7 @@ class Item(models.Model):
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
     customer_contact = models.CharField(max_length=10)
-    item_details = models.ForeignKey(Item,on_delete=models.CASCADE)
+    item_details = models.ForeignKey(Item,on_delete=models.CASCADE,null=True,blank=True)
     
 
     def __str__(self):

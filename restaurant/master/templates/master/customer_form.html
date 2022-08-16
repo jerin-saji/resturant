@@ -1,0 +1,23 @@
+<title>Customer_List</title>
+
+{% block content %}
+<form action="/customer/" method="POST">
+    {% csrf_token %}
+    
+    {{ form }}
+    <input type="submit">
+</form>
+
+<ul>
+    {% for i in key1 %}
+    <li>
+        {{ i.customer_name }}
+        {{ i.customer_contact }}
+        {{ i.item_details }}
+        <a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a>
+        <a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a>
+        <br><br>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
