@@ -1,0 +1,11 @@
+{% extends 'master/base.html' %}
+<h1> Update Customer</h1>
+{% block content %}
+<form action="" method="POST">
+
+        {% csrf_token %}
+    
+        {{form }}
+        <input type="submit" name = 'update' onclick="alert('Do you want to update!')">
+    </form>
+{% endblock %}

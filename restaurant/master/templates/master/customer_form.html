@@ -23,9 +23,9 @@
         <tr>
             <td>{{ i.customer_name }}</td>
             <td>{{ i.customer_contact }}</td>
-                <td>{{ i.item_details }}</td>
-                    <td><a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a></td>
-                        <td><a href="/customer/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a></td>
+            <td>{{ i.item_details  }}</td>
+            <td><a href="{% url 'customer-update' i.id %}"><button type="button" name = 'update_button' value = 'update'  onclick="alert('Do you want to update!')">Update!</button></a></td>
+            <td><a href="/customer/{{i.id}}"><button type="button" name = 'delete_button' value = 'delete' onclick="alert('Do you want to delete!')">Delete!</button></a></td>
         </tr>
         {% endfor %}
     </tbody>

@@ -26,8 +26,8 @@
                 <td>{{i.item_category}}</td>
                     <td>{{i.item_cost}}</td>
                         <td>{{i.company_name}}</td>
-                            <td><a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to update!')">Update!</button></a></td>
-                                <td><a href="/items/{{i.id}}"><button type="button" onclick="alert('Do you want to delete!')">Delete!</button></a></td>
+                            <td><a href="{% url 'items-update' i.id %}"><button type="button" name = 'update' onclick="alert('Do you want to update!')">Update!</button></a></td>
+                                <td><a href="/items/{{i.id}}"><button type="button" value = 'delete' onclick="alert('Do you want to delete!')">Delete!</button></a></td>
                             </tr>
                             {% endfor %}
 
