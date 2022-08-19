@@ -1,0 +1,42 @@
+{% extends 'master/base.html' %}
+<title>Item_List</title>
+
+{% block content %}
+<p><a href="{% url 'home' %}">Back to home</a></p>
+<form  method="POST">
+    {% csrf_token %}
+    <br>
+    {{form }}
+    {% comment %} <input type="submit"> {% endcomment %}
+</form>
+
+
+<table class="table  table-success table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Item_name</th>
+            <th scope="col">Item_category</th>
+            <th scope="col">Item_cost</th>
+            <th scope="col">Item_company_name</th>
+            <th scope="col">Delete_table</th>
+            <th scope="col">Update_table</th>
+        </tr
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td>{{object.item_name}}</td>
+                <td>{{object.item_category}}</td>
+                    <td>{{object.item_cost}}</td>
+                        <td>{{object.company_name}}</td>
+                        {% csrf_token %} 
+                        <form action="/item-delete/{{ object.id }}",method = "post">
+                            <td><button type="submit">Delete</button></td>
+                            {% comment %} <td><a href="{% url 'items-update' object.id %}"><button type="button" name = 'update' onclick="alert('Do you want to update!')">Update!</button></a></td> {% endcomment %}
+                                {% comment %} <td><a href=""><button type="button" value = 'delete' onclick="alert('Do you want to delete!')">Delete!</button></a></td> {% endcomment %}
+                            </form>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+{% endblock %}

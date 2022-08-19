@@ -1,11 +1,11 @@
 {% extends 'master/base.html' %}
 <h1> Update Items</h1>
 {% block content %}
-<form action="" method="POST">
+<form action="{% url 'class-item-update' object.id %}" method="POST">
 
         {% csrf_token %}
     
         {{form }}
-        <input type="submit" name = 'update' onclick="alert('Do you want to update!')">
+        <input type="submit" name="method" value="update" onclick="alert('Do you want to update!')">
     </form>
 {% endblock %}

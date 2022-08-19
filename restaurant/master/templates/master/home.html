@@ -1,0 +1,27 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >resturant</title>
+</head>
+
+<style>
+    a {
+        color: white;
+    }
+    body{
+        background-size:cover;
+    }
+</style>
+
+<body style ="background-image:url('static/resturant.jpg')">
+    <h1 style="color:#ccff99;">Resturant</h1>
+    <a href="{% url 'class-item-view' %}">Items-List</a>
+    <a href="{% url 'class-customer-view' %}">Customer-details</a>
+</body>
+</html>
+
+

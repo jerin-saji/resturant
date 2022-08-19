@@ -2,34 +2,44 @@
 <title>Item_List</title>
 
 {% block content %}
-<form action="/items/" method="POST">
+<p><a href="{% url 'home' %}">Back to home</a></p>
+<form method="POST">
     {% csrf_token %}
-    
+    <br>
     {{form }}
     <input type="submit">
 </form>
 
 
-<table class="table">
+<table class="table  table-success table-striped">
     <thead>
         <tr>
-            <th scope="col">item_name</th>
-            <th scope="col">item_category</th>
-            <th scope="col">item_cost</th>
-            <th scope="col">item_company_name</th>
+            <th scope="col">Item_name</th>
+            <th scope="col">Item_category</th>
+            <th scope="col">Item_cost</th>
+            <th scope="col">Item_company_name</th>
+            <th scope="col">Update_table</th>
+            <th scope="col">Delete_table</th>
         </tr
     </thead>
     <tbody>
-        {% for i in lists %}
+        {% for object in object_list %}
         <tr>
-            <td>{{i.item_name}}</td>
-                <td>{{i.item_category}}</td>
-                    <td>{{i.item_cost}}</td>
-                        <td>{{i.company_name}}</td>
-                            <td><a href="{% url 'items-update' i.id %}"><button type="button" name = 'update' onclick="alert('Do you want to update!')">Update!</button></a></td>
-                                <td><a href="/items/{{i.id}}"><button type="button" value = 'delete' onclick="alert('Do you want to delete!')">Delete!</button></a></td>
-                            </tr>
-                            {% endfor %}
+            <td>{{object.item_name}}</td>
+            <td>{{object.item_category}}</td>
+            <td>{{object.item_cost}}</td>
+            <td>{{object.company_name}}</td>
 
-                        </tbody>
+            <form action="{% url 'class-item-update' object.id %}" method="POST">
+            {% csrf_token %} 
+            <td><button type="submit" name='method' value='edit' onclick="alert('Do you want to update!')">Update!</button></td>
+            </form>
+
+            <form action="{% url 'class-item-delete' object.id %}" method="POST">
+            {% csrf_token %} 
+            <td><button type="submit" name='method' value='delete' onclick="alert('Do you want to delete!')">Delete!</button></td>
+            </form>
+        </tr>
+        {% endfor %}
+        </tbody>
 {% endblock %}
